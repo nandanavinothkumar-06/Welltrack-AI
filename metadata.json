@@ -1,0 +1,7 @@
+{
+  "name": "WellTrack AI",
+  "description": "A Personal Wellness Tracker that uses AI to give users personalized daily wellness tips and securely stores their data.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

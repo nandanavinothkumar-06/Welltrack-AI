@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" class="transition-colors duration-300">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WellTrack AI</title>
+
+    <!-- Font setup -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ✅ Instant dark mode load fix (single clean version, no flicker, no conflict) -->
+    <script>
+      (function () {
+        const root = document.documentElement;
+        const userTheme = localStorage.getItem("theme");
+        const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const isDark = userTheme === "dark" || (!userTheme && systemPrefersDark);
+
+        // Apply instantly to avoid white flash
+        if (isDark) {
+          root.classList.add("dark");
+        } else {
+          root.classList.remove("dark");
+        }
+
+        // Apply to body after DOM exists (safe timing)
+        window.addEventListener("DOMContentLoaded", () => {
+          document.body.classList.toggle("dark", isDark);
+        });
+      })();
+    </script>
+
+    <!-- Import map for remote React dependencies -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://aistudiocdn.com/react@^19.2.0",
+          "react/": "https://aistudiocdn.com/react@^19.2.0/",
+          "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+          "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.5",
+          "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
+          "recharts": "https://aistudiocdn.com/recharts@^3.3.0"
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+
+  <body
+    class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300"
+  >
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
